@@ -16,9 +16,9 @@ public class ListUtils {
 
 	/**
 	 * 获取list里面单个对象的单个属性重新组装成一个list
-	 * @param list
-     * @param columnName
-     * @param columnClass
+	 * @param list 原始列表
+     * @param columnName 字段名
+     * @param columnClass 字段类型
 	 * @author littlehui
 	 * @date 2021/11/15 15:45
 	 * @return java.util.List<T>
@@ -38,8 +38,8 @@ public class ListUtils {
 
 	/**
 	 * 获取字段属性值
-	 * @param object
-     * @param propName
+	 * @param object 原始对象
+     * @param propName 属性名
 	 * @author littlehui
 	 * @date 2021/11/15 15:44
 	 * @return java.lang.Object
@@ -76,8 +76,8 @@ public class ListUtils {
 
 	/**
 	 * 根据属性名称获取属性值.
-	 * @param object
-     * @param propName
+	 * @param object 原始对象
+     * @param propName 属性名
 	 * @author littlehui
 	 * @date 2021/11/15 15:45
 	 * @return java.lang.Object
@@ -101,14 +101,13 @@ public class ListUtils {
 
 	/**
 	 * 根据属性名称获取属性值.
-	 * @param object
-     * @param propName
-     * @param params
+	 * @param object 原始对象
+     * @param propName 属性名
 	 * @author littlehui
 	 * @date 2021/11/15 15:45
 	 * @return java.lang.Object
 	 */
-	public static Object getPropValueByMethod(Object object, String propName, Object... params) {
+	public static Object getPropValueByMethod(Object object, String propName) {
 		try {
 			StringBuffer sb = new StringBuffer(propName);
 			sb.setCharAt(0, Character.toUpperCase(propName.charAt(0)));
@@ -132,7 +131,7 @@ public class ListUtils {
 
 	/**
 	 * 判断容器是否为空
-	 * @param c
+	 * @param c 容器
 	 * @author littlehui
 	 * @date 2021/11/15 15:45
 	 * @return boolean
@@ -146,7 +145,7 @@ public class ListUtils {
 
 	/**
 	 * 是否不为空
-	 * @param c
+	 * @param c 需要判断的容器
 	 * @author littlehui
 	 * @date 2021/11/15 15:46
 	 * @return boolean
@@ -157,8 +156,8 @@ public class ListUtils {
 
 	/**
 	 * 拼装list成String
-	 * @param list
-     * @param separator
+	 * @param list 原始列表
+     * @param separator 分隔符
 	 * @author littlehui
 	 * @date 2021/11/15 15:46
 	 * @return java.lang.String

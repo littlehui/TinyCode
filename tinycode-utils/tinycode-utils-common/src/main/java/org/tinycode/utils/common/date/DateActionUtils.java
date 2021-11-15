@@ -72,7 +72,7 @@ public class DateActionUtils {
 
     /**
      * 时间格式转换成yyyy-MM-dd
-     * @param stringDate
+     * @param stringDate 原始时间
      * @author littlehui
      * @date 2021/11/15 15:48
      * @return java.util.Date
@@ -83,8 +83,8 @@ public class DateActionUtils {
 
     /**
      * 转换成format格式
-     * @param stringDate
-     * @param format
+     * @param stringDate 原始时间
+     * @param format 格式
      * @author littlehui
      * @date 2021/11/15 15:48
      * @return java.util.Date
@@ -103,7 +103,7 @@ public class DateActionUtils {
 
     /**
      * 将Date格式时间转成yyyy-MM-dd格式
-     * @param srcDate
+     * @param srcDate 原始时间
      * @author littlehui
      * @date 2021/11/15 15:48
      * @return java.lang.String
@@ -114,8 +114,8 @@ public class DateActionUtils {
 
     /**
      * 将Date格式转成需要的patter格式
-     * @param srcDate
-     * @param pattern
+     * @param srcDate 原始时间
+     * @param pattern 格式
      * @author littlehui
      * @date 2021/11/15 15:49
      * @return java.lang.String
@@ -129,8 +129,8 @@ public class DateActionUtils {
 
     /**
      * 将时间戳毫秒数转成响应的格式并返回
-     * @param time
-     * @param pattern
+     * @param time 时间戳毫秒数
+     * @param pattern 格式
      * @author littlehui
      * @date 2021/11/15 15:49
      * @return java.lang.String
@@ -141,7 +141,7 @@ public class DateActionUtils {
 
     /**
      * 根据时间戳毫秒数返回当前的季度
-     * @param timeMills
+     * @param timeMills 时间戳毫秒数
      * @author littlehui
      * @date 2021/11/15 15:50
      * @return java.lang.Integer
@@ -160,7 +160,7 @@ public class DateActionUtils {
 
     /**
      * 根据时间戳毫秒数计算天yyyyMMdd格式返回
-     * @param timeMills
+     * @param timeMills 时间戳毫秒
      * @author littlehui
      * @date 2021/11/15 15:50
      * @return java.lang.Integer
@@ -174,7 +174,7 @@ public class DateActionUtils {
 
     /**
      * 根据时间戳毫秒数计算月份yyyyMM格式返回
-     * @param timeMills
+     * @param timeMills 时间戳毫秒
      * @author littlehui
      * @date 2021/11/15 15:51
      * @return java.lang.Integer
@@ -188,7 +188,7 @@ public class DateActionUtils {
 
     /**
      * 根据时间戳毫秒数计算分钟yyyyMMddmm格式返回
-     * @param timeMills
+     * @param timeMills 时间戳毫秒
      * @author littlehui
      * @date 2021/11/15 15:51
      * @return java.lang.String
@@ -202,7 +202,7 @@ public class DateActionUtils {
 
     /**
      * 获取前N分钟
-     * @param latest
+     * @param latest 最近的第几分钟
      * @author littlehui
      * @date 2021/11/15 15:52
      * @return java.util.List<java.lang.String>
@@ -219,7 +219,7 @@ public class DateActionUtils {
 
     /**
      * 根据时间戳毫秒数计算当前年yyyy格式返回
-     * @param timeMills
+     * @param timeMills 时间戳毫秒
      * @author littlehui
      * @date 2021/11/15 15:52
      * @return java.lang.Integer
@@ -265,7 +265,7 @@ public class DateActionUtils {
 
     /**
      * 获取指定时区时间戳毫秒数的所在天的开始毫秒数
-     * @param timeStamp
+     * @param timeStamp 时间戳毫秒
      * @param timeZone GMT+8或UTC+08:00
      * @author littlehui
      * @date 2021/11/15 15:54
@@ -284,7 +284,7 @@ public class DateActionUtils {
 
     /**
      * 计算特定时区下时间戳毫秒数所在的那天的最后一毫秒，并返回
-     * @param timeStamp
+     * @param timeStamp 时间戳毫秒
      * @param timeZone GMT+8或UTC+08:00
      * @author littlehui
      * @date 2021/11/15 15:55
@@ -303,7 +303,7 @@ public class DateActionUtils {
 
     /**
      * 计算时间戳毫秒数在指定时区所在月的开始毫秒数
-     * @param timeStamp
+     * @param timeStamp 时间戳毫秒
      * @param timeZone GMT+8或UTC+08:00
      * @author littlehui
      * @date 2021/11/15 15:56
@@ -326,7 +326,7 @@ public class DateActionUtils {
 
     /**
      * 计算指定时间毫秒数下的某个时区下所在月份的结束毫秒数
-     * @param timeStamp
+     * @param timeStamp 时间戳毫秒
      * @param timeZone GMT+8或UTC+08:00
      * @author littlehui
      * @date 2021/11/15 15:57
@@ -349,7 +349,7 @@ public class DateActionUtils {
 
     /**
      * 获取时间戳毫秒数在特定时区下的当前年的开始毫秒数
-     * @param timeStamp
+     * @param timeStamp 时间戳毫秒
      * @param timeZone GMT+8或UTC+08:00
      * @author littlehui
      * @date 2021/11/15 15:58
@@ -373,7 +373,7 @@ public class DateActionUtils {
 
     /**
      * 获取时间戳毫秒数在特定时区下所在年的最后一毫秒数
-     * @param timeStamp
+     * @param timeStamp 时间戳毫秒
      * @param timeZone GMT+8或UTC+08:00
      * @author littlehui
      * @date 2021/11/15 15:58
@@ -397,8 +397,8 @@ public class DateActionUtils {
 
     /**
      * 时间戳毫秒数转特定时区字符串并返回
-     * @param timestamp
-     * @param zoneId
+     * @param timestamp 时间戳毫秒
+     * @param zoneId 时区ID
      * @author littlehui
      * @date 2021/11/15 16:00
      * @return java.lang.String
@@ -411,8 +411,8 @@ public class DateActionUtils {
 
     /**
      * 天数累加
-     * @param date
-     * @param amount
+     * @param date 时间
+     * @param amount 累计数
      * @author littlehui
      * @date 2021/11/15 16:00
      * @return java.util.Date
@@ -423,8 +423,8 @@ public class DateActionUtils {
 
     /**
      * 月数累加
-     * @param date
-     * @param amount
+     * @param date 时间
+     * @param amount 累计数
      * @author littlehui
      * @date 2021/11/15 16:01
      * @return java.util.Date
@@ -435,8 +435,8 @@ public class DateActionUtils {
 
     /**
      * 星期数累加
-     * @param date
-     * @param amount
+     * @param date 时间
+     * @param amount 累计数
      * @author littlehui
      * @date 2021/11/15 16:01
      * @return java.util.Date
@@ -447,8 +447,8 @@ public class DateActionUtils {
 
     /**
      * 年数累加
-     * @param date
-     * @param amount
+     * @param date 时间
+     * @param amount 累计数
      * @author littlehui
      * @date 2021/11/15 16:01
      * @return java.util.Date
@@ -459,9 +459,9 @@ public class DateActionUtils {
 
     /**
      * 根据日历字段累加
-     * @param date
-     * @param calendarField
-     * @param amount
+     * @param date 时间
+     * @param calendarField 需要计算的日历字段
+     * @param amount 累计数
      * @author littlehui
      * @date 2021/11/15 16:02
      * @return java.util.Date
