@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>tinycode-test-web</module>
+        <module>tinycode-app-web</module>
     </modules>
 
     <properties>

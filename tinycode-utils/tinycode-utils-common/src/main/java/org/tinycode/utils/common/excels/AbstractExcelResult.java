@@ -16,7 +16,6 @@ import java.util.List;
  */
 public abstract class AbstractExcelResult<T> {
 
-    //excel的头
     protected String[] rowHeaders;
 
     protected ExcelResult excelResult;

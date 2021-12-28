@@ -1,0 +1,101 @@
+server:
+  port: 8091
+  servlet:
+    context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://10.5.117.152:3306/tinycode?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    filters: wall
+    maxActive: 200
+    initialSize: 5
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    maxEvictableIdleTimeMillis: 1800001
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: false
+    poolPreparedStatements: true
+    #active多少秒后强制关闭 80秒
+    removeAbandonedTimeout: 180
+    removeAbandoned: true
+    logAbandoned: true
+    #name: druidDataSource
+    druid:
+      stat-view-servlet:
+        enabled: true
+        login-password: littlehui
+        login-username: littlehui
+        url-pattern: /druid/*
+        #web-stat-filter:
+         # enabled: false
+
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+      force-request: true
+      force-response: true
+
+  application:
+    name: reader-admin
+  mvc:
+    static-path-pattern: /**
+    pathmatch:
+      use-suffix-pattern: true
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL55Dialect
+  #redis
+  redis:
+    host: 172.28.70.28
+    password: readertest
+    timeout: 30M
+    port: 6378
+#    redisson:
+#      config:
+#        redisson-dev: classpath:redisson/redisson-dev.yml
+  #spring-session
+  session:
+    store-type: redis
+    timeout: 30M
+
+mybatis:
+  #type-aliases-package: tk.mybatis.springboot.model
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package=net:
+    codingme:
+      boot:
+        domain: com.reader.dao.domain
+
+logging:
+  level:
+    root: INFO
+  file:
+    max-history: 10
+    max-size: 100MB
+  path: /opt/logs/prog/reader/app/readerApp
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health"
