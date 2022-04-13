@@ -1,7 +1,5 @@
 package org.tinycode.utils.common.number;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -12,34 +10,88 @@ import java.util.Random;
  **/
 public class RandomUtil {
 
+    private static final Random RANDOM = new Random();
+
+    private static final char[] NUMBERS = "0123456789".toCharArray();
+
+    private static final char[] LETTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+
+    private static final char[] NUMBERS_AND_LETTERS = "0123456789abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+
     /**
-     * 从给定的List数组中随机返回特定的数量
-     * @param list 被随机的列表
-     * @param selected 随机条数
+     * 产生length位的随机字符串
+     *
+     * @description: TODO
      * @author littlehui
-     * @date 2021/11/15 16:09
-     * @return java.util.List<T>
+     * @date 2022/4/13 14:25
+     * @version 1.0
      */
-    public static <T> List<T> getRandomNum(List<T> list, int selected) {
-        List<T> reList = new ArrayList<T>();
-        Random random = new Random();
-        // 先抽取，备选数量的个数
-        if (list.size() >= selected) {
-            for (int i = 0; i < selected; i++) {
-                // 随机数的范围为0-list.size()-1;
-                int target = random.nextInt(list.size());
-                reList.add(list.get(target));
-                list.remove(target);
-            }
-        } else {
-            selected = list.size();
-            for (int i = 0; i < selected; i++) {
-                // 随机数的范围为0-list.size()-1;
-                int target = random.nextInt(list.size());
-                reList.add(list.get(target));
-                list.remove(target);
+    public static String randomStr(int length) {
+        if (length < 1) {
+            return null;
+        }
+        char[] randBuffer = new char[length];
+        for (int i = 0; i < randBuffer.length; i++) {
+            randBuffer[i] = NUMBERS_AND_LETTERS[RANDOM.nextInt(72)];
+        }
+        return new String(randBuffer);
+    }
+
+    /**
+     * 产生length长度的字母字符
+     *
+     * @description: TODO
+     * @author littlehui
+     * @date 2022/4/13 14:25
+     * @version 1.0
+     */
+    public static String randomLetter(int length) {
+        if (length < 1) {
+            return null;
+        }
+        char[] randBuffer = new char[length];
+        for (int i = 0; i < randBuffer.length; i++) {
+            randBuffer[i] = LETTERS[RANDOM.nextInt(51)];
+        }
+        return new String(randBuffer);
+    }
+
+    /**
+     * 产生length位的随机数字
+     *
+     * @description: TODO
+     * @author littlehui
+     * @date 2022/4/13 14:26
+     * @version 1.0
+     */
+    public static String randomNum(int length) {
+        if (length < 1) {
+            return null;
+        }
+        char[] randBuffer = new char[length];
+        for (int i = 0; i < randBuffer.length; i++) {
+            randBuffer[i] = NUMBERS[RANDOM.nextInt(10)];
+            if (i == 0) {
+                if (randBuffer[i] == '0') {
+                    i--;
+                }
             }
         }
-        return reList;
+        return new String(randBuffer);
+    }
+
+    /**
+     * 随即产生min到max之间的随机数,包含max和min
+     *
+     * @description: TODO
+     * @author littlehui
+     * @date 2022/4/13 14:26
+     * @version 1.0
+     */
+    public static int randomInt(int min, int max) {
+        if (min == max) {
+            return min;
+        }
+        return RANDOM.nextInt(max + 1) % (max - min + 1) + min;
     }
 }

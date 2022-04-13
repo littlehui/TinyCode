@@ -28,6 +28,9 @@ public class OkHttpUtil {
     private static Long TIMEOUT = 3L;
 
 
+    /**
+     *
+     */
     private static OkHttpClient clientWithProxy = new OkHttpClient.Builder()
             //是否开启缓存
             .retryOnConnectionFailure(true)
