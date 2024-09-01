@@ -85,4 +85,5 @@ public interface ControllerBaseTest {
      * @throws Exception
      */
     public void delete(Object param, String url) throws Exception;
+    
 }

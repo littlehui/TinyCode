@@ -14,6 +14,7 @@
     <modules>
         <module>tinycode-test-web</module>
         <module>tinycode-app-web</module>
+        <module>tinycode-admin-web</module>
     </modules>
 
     <properties>

@@ -1,9 +1,18 @@
 package org.tinycode.web.mock.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Before;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.servlet.HandlerInterceptor;
+
+import java.util.Map;
 
 /**
  *
@@ -40,54 +49,45 @@ import org.springframework.context.ApplicationContextAware;
  * @date 2021/7/10 17:23
  * @version 1.0
  **/
-public class ControllerAwareJwtTest extends ControllerJwtTest implements ApplicationContextAware {
+public class ControllerAwareJwtTest extends ControllerAwareTest implements ApplicationContextAware {
 
-    ApplicationContext applicationContext;
+    private String jwtToken;
 
-    private static final String SUBFIX_TEST = "Tests";
+    private HandlerInterceptor handlerInterceptor;
+
+    public void setInterceptor(HandlerInterceptor handlerInterceptor) {
+        this.handlerInterceptor = handlerInterceptor;
+    }
+
+    public void setJwtToken(String jwtToken) {
+        this.jwtToken = jwtToken;
+    }
+
+    private static final String AUTHORIZATION = "Authorization";
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
-
-    @Before
-    public void setup() {
-        String actualBeanName = this.getClass().getSimpleName();
-        actualBeanName = toLowerCaseFirstOne(actualBeanName);
-        Object controller = applicationContext.getBean(actualBeanName.replaceAll(SUBFIX_TEST, ""));
-        super.setup(controller);
-    }
-    
-    /** 
-     * 首字母转小写
-     * 首字母转小写
-     * @param s
-     * @author littlehui
-     * @date 2021/11/15 17:20
-     * @return java.lang.String
-     */
-    public String toLowerCaseFirstOne(String s){
-        if(Character.isLowerCase(s.charAt(0))) {
-            return s;
+    public RequestBuilder initRequestBuilder(Object param, String url, Map<String, String> headers, MediaType mediaType) {
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION, jwtToken);
+        if (param != null) {
+            requestBuilder.content(JSONObject.toJSONString(param));
+        }
+        if (headers != null && headers.size() > 0) {
+            for (String key : headers.keySet()) {
+                requestBuilder.header(key, headers.get(key));
+            }
+        }
+        if (mediaType != null) {
+            requestBuilder.contentType(mediaType);
         } else {
-            return (new StringBuilder()).append(Character.toLowerCase(s.charAt(0))).append(s.substring(1)).toString();
+            requestBuilder.contentType(MediaType.APPLICATION_JSON);
         }
+        return requestBuilder;
     }
 
-    /**
-     * 首字母转大写
-     * @param s
-     * @author littlehui
-     * @date 2021/11/15 17:07
-     * @return java.lang.String
-     */
-    public String toUpperCaseFirstOne(String s){
-        if(Character.isUpperCase(s.charAt(0))) {
-            return s;
-        }
-        else {
-            return (new StringBuilder()).append(Character.toUpperCase(s.charAt(0))).append(s.substring(1)).toString();
-        }
+    @Override
+    protected void initMockMvc(Object singleTon) {
+        mockMvc = MockMvcBuilders.standaloneSetup(singleTon).addInterceptors(handlerInterceptor).build();
     }
+
 }

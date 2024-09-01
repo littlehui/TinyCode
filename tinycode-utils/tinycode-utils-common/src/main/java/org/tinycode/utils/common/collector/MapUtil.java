@@ -1,4 +1,4 @@
-package org.tinycode.utils.common.context;
+package org.tinycode.utils.common.collector;
 
 /**
  * @author littlehui
