@@ -37,6 +37,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
 
         <!-- Lombok 工具 -->
         <dependency>
